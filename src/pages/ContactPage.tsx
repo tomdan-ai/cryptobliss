@@ -106,7 +106,7 @@ const ContactPage: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               type="submit"
               disabled={formStatus === 'submitting'}
-              className={`w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 flex items-center justify-center ${formStatus === 'submitting' ? 'opacity-70' : ''}`}
+              className={`w-full bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 flex items-center justify-center ${formStatus === 'submitting' ? 'opacity-70' : ''}`}
             >
               {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
               <Send className="w-5 h-5 ml-2" />

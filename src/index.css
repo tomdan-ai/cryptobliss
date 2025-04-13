@@ -2,32 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply antialiased;
-  }
-  
-  .card-shadow {
-    box-shadow: 0 10px 15px -3px rgba(43, 29, 18, 0.1), 0 4px 6px -4px rgba(43, 29, 18, 0.1);
-  }
-  
-  .card-shadow-hover:hover {
-    box-shadow: 0 20px 25px -5px rgba(43, 29, 18, 0.2), 0 8px 10px -6px rgba(43, 29, 18, 0.1);
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-  }
-  
-  .gradient-bg {
-    background: linear-gradient(135deg, #F4A300, #DA962B 50%, #F4A300);
-    background-size: 200% 200%;
-    animation: gradientAnimation 15s ease infinite;
-  }
-  
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: white;
+  background: linear-gradient(135deg, #2B1D12, #DA962B, #F4A300);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.card-shadow {
+  box-shadow: 0 10px 15px -3px rgba(244, 163, 0, 0.1), 0 4px 6px -4px rgba(244, 163, 0, 0.1);
+}
+
+.card-shadow-hover:hover {
+  box-shadow: 0 20px 25px -5px rgba(244, 163, 0, 0.2), 0 8px 10px -6px rgba(244, 163, 0, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #F4A300, #DA962B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #F4A300, #DA962B 50%, #F4A300);
+  background-size: 200% 200%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes float {
@@ -44,12 +55,4 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
-}
-
-body {
-  background: radial-gradient(circle, #F4A300, #DA962B, #2B1D12);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  margin: 0;
 }

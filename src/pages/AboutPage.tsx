@@ -69,7 +69,7 @@ const AboutPage: React.FC = () => {
         transition={{ duration: 0.8 }}
         className="text-center max-w-4xl mx-auto mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-white bg-clip-text">
           About CRYPTOBLISS
         </h1>
         <p className="text-xl text-gray-300">
@@ -240,6 +240,30 @@ const AboutPage: React.FC = () => {
             delay={0.3} 
           />
           
+          <TeamMemberCard 
+            name="Nsikak Zion" 
+            role="Sales Lead" 
+            description="Strategic partnership builder with exceptional communication skills. Nsikak drives adoption and creates valuable connections across the ecosystem." 
+            imageUrl="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60" 
+            twitterHandle="nsikakzion" 
+            delay={0.4} 
+          />
+          <TeamMemberCard 
+            name="Nsikak Zion" 
+            role="Sales Lead" 
+            description="Strategic partnership builder with exceptional communication skills. Nsikak drives adoption and creates valuable connections across the ecosystem." 
+            imageUrl="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60" 
+            twitterHandle="nsikakzion" 
+            delay={0.4} 
+          />
+          <TeamMemberCard 
+            name="Nsikak Zion" 
+            role="Sales Lead" 
+            description="Strategic partnership builder with exceptional communication skills. Nsikak drives adoption and creates valuable connections across the ecosystem." 
+            imageUrl="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60" 
+            twitterHandle="nsikakzion" 
+            delay={0.4} 
+          />
           <TeamMemberCard 
             name="Nsikak Zion" 
             role="Sales Lead" 
