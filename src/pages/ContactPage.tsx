@@ -41,7 +41,7 @@ const ContactPage: React.FC = () => {
         transition={{ duration: 0.8 }}
         className="text-center max-w-4xl mx-auto mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-white bg-clip-text">
           Let's Connect
         </h1>
         <p className="text-xl text-gray-300">
@@ -146,11 +146,11 @@ const ContactPage: React.FC = () => {
             <div className="space-y-8">
               <div className="flex items-start">
                 <div className="bg-blue-500/20 rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Mail className="w-6 h-6 text-blue-400" />
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Email Us</h3>
-                  <a href="mailto:cryptobliss03@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  <a href="mailto:cryptobliss03@gmail.com" className="text-gray-300 hover:text-white transition-colors">
                     cryptobliss03@gmail.com
                   </a>
                   <p className="text-gray-400 mt-1 text-sm">
@@ -182,7 +182,7 @@ const ContactPage: React.FC = () => {
 
               <div className="flex items-start">
                 <div className="bg-blue-500/20 rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-blue-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white">
                     <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
                   </svg>
                 </div>
@@ -192,7 +192,7 @@ const ContactPage: React.FC = () => {
                     href="https://x.com/thecryptoblist" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-blue-400 transition-colors flex items-center"
+                    className="text-gray-300 hover:text-white transition-colors flex items-center"
                   >
                     @thecryptoblist
                     <ExternalLink className="w-4 h-4 ml-1" />
@@ -212,7 +212,7 @@ const ContactPage: React.FC = () => {
             className="mt-12 bg-white/5 backdrop-blur-lg rounded-xl p-6"
           >
             <div className="flex items-center mb-4">
-              <MapPin className="w-6 h-6 text-purple-400 mr-2" />
+              <MapPin className="w-6 h-6 text-white mr-2" />
               <h3 className="text-lg font-semibold">Our Focus Region</h3>
             </div>
             <p className="text-gray-300">

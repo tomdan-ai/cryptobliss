@@ -23,7 +23,7 @@ const FeatureCard = ({ icon: Icon, title, description, delay }: {
       className="bg-white/10 backdrop-blur-lg rounded-xl p-8 hover:bg-white/15 transition-all duration-300"
     >
       <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-        <Icon className="w-8 h-8 text-blue-400" />
+        <Icon className="w-8 h-8 text-white" />
       </div>
       <h3 className="text-xl font-bold mb-4 text-white">{title}</h3>
       <p className="text-gray-300">{description}</p>
@@ -41,7 +41,7 @@ const FeaturesPage: React.FC = () => {
         transition={{ duration: 0.8 }}
         className="text-center max-w-4xl mx-auto mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-white bg-clip-text">
           Unique Features
         </h1>
         <p className="text-xl text-gray-300">
@@ -117,7 +117,7 @@ const FeaturesPage: React.FC = () => {
           
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8">
             <div className="flex items-center mb-6">
-              <Users className="w-10 h-10 text-blue-400 mr-4" />
+              <Users className="w-10 h-10 text-white mr-4" />
               <h3 className="text-2xl font-bold">Community-Driven</h3>
             </div>
             <p className="text-gray-300">
@@ -128,7 +128,7 @@ const FeaturesPage: React.FC = () => {
           
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8">
             <div className="flex items-center mb-6">
-              <MessageCircle className="w-10 h-10 text-purple-400 mr-4" />
+              <MessageCircle className="w-10 h-10 text-white mr-4" />
               <h3 className="text-2xl font-bold">Education and Adoption</h3>
             </div>
             <p className="text-gray-300">

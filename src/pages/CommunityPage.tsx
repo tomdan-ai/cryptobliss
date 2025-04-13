@@ -17,7 +17,7 @@ const TestimonialCard = ({ quote, name, role }: { quote: string, name: string, r
       transition={{ duration: 0.6 }}
       className="bg-white/10 backdrop-blur-lg rounded-xl p-6"
     >
-      <div className="mb-4 text-purple-400">
+      <div className="mb-4 text-white">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
           <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/>
         </svg>
@@ -41,7 +41,7 @@ const CommunityPage: React.FC = () => {
         transition={{ duration: 0.8 }}
         className="text-center max-w-4xl mx-auto mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-white bg-clip-text">
           Join Our Thriving Community
         </h1>
         <p className="text-xl text-gray-300">
@@ -57,7 +57,7 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-blue-400 mb-2">1000+</div>
+          <div className="text-4xl font-bold text-white mb-2">1000+</div>
           <div className="text-gray-300">Community Members</div>
         </motion.div>
         
@@ -67,7 +67,7 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-purple-400 mb-2">20+</div>
+          <div className="text-4xl font-bold text-white mb-2">20+</div>
           <div className="text-gray-300">Countries Represented</div>
         </motion.div>
         
@@ -77,7 +77,7 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-blue-400 mb-2">50+</div>
+          <div className="text-4xl font-bold text-white mb-2">50+</div>
           <div className="text-gray-300">Expert Contributors</div>
         </motion.div>
         
@@ -87,7 +87,7 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-purple-400 mb-2">100+</div>
+          <div className="text-4xl font-bold text-white mb-2">100+</div>
           <div className="text-gray-300">Monthly Events</div>
         </motion.div>
       </div>
@@ -104,7 +104,7 @@ const CommunityPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8">
             <div className="bg-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-              <Users className="w-8 h-8 text-blue-400" />
+              <Users className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-4">Connect with Peers</h3>
             <p className="text-gray-300">
@@ -114,7 +114,7 @@ const CommunityPage: React.FC = () => {
           
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8">
             <div className="bg-purple-500/20 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-              <Link className="w-8 h-8 text-purple-400" />
+              <Link className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-4">Access to Experts</h3>
             <p className="text-gray-300">
@@ -124,7 +124,7 @@ const CommunityPage: React.FC = () => {
           
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8">
             <div className="bg-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-              <Briefcase className="w-8 h-8 text-blue-400" />
+              <Briefcase className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-4">Career Opportunities</h3>
             <p className="text-gray-300">

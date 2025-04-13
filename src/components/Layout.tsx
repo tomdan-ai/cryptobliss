@@ -20,7 +20,7 @@ const Layout: React.FC = () => {
           <div className="flex items-center justify-between py-5">
             <Link to="/" className="flex items-center space-x-2">
               <img src="/logo.png" alt="CRYPTOBLISS" className="h-10 w-auto" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-transparent bg-clip-text">
+              <span className="text-2xl font-bold bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-white bg-clip-text">
                 CRYPTOBLISS
               </span>
             </Link>
@@ -112,7 +112,7 @@ const Layout: React.FC = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <img src="/logo.png" alt="CRYPTOBLISS" className="h-8 w-auto" />
-                <span className="text-xl font-bold bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-transparent bg-clip-text">
+                <span className="text-xl font-bold bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-white bg-clip-text">
                   CRYPTOBLISS
                 </span>
               </div>

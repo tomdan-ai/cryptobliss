@@ -1,27 +1,258 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Target, Users, Globe, Lightbulb, CheckCircle, ExternalLink, Twitter } from 'lucide-react';
+import { Target, Users, Globe, Lightbulb, CheckCircle, ExternalLink, Twitter, X, Link, Calendar, Mail, Phone } from 'lucide-react';
 
+// Team member detailed information
+const teamMembersDetails = {
+  "markudeh_": {
+    name: "Mark Udeh",
+    role: "Founder & CEO",
+    tagline: "Web3 Reformist | Community Builder | Crypto Mentor | Digital Influencer",
+    summary: "Experienced and passionate Web3 reformist with a proven track record in community building, affiliate marketing, crypto consulting, and content creation. My goal is to empower Web3 enthusiasts and preach wealth establishment through the crypto space.",
+    experience: [
+      {
+        title: "CEO & Community Lead",
+        company: "CryptoBliss",
+        period: "Present",
+        achievements: [
+          "Founded and lead a community-driven Web3 brand focused on empowering individuals",
+          "Developed engagement strategies that led to 80% increase in community size",
+          "Host community AMA sessions, educational workshops, and marketing campaigns"
+        ]
+      },
+      {
+        title: "Crypto Consultant",
+        company: "Freelance",
+        period: "Present",
+        achievements: [
+          "Offer expert advice to investors and traders on market trends",
+          "Provide technical analysis and portfolio management guidance"
+        ]
+      }
+    ],
+    skills: ["Community Management", "Affiliate Marketing", "Technical Analysis", "Blockchain Education", "Leadership"],
+    education: "University of Uyo (Ongoing) - B.Sc. in Statistics",
+    socials: {
+      twitter: "iammarkudeh",
+      linkedin: "Mark (thecryptoblist) Udeh",
+      email: "markudeh03@gmail.com",
+      phone: "+234 906 951 3498"
+    },
+    imageUrl: "/mark.mp4"
+  },
+  "devtombest": {
+    name: "Tom Udoh",
+    role: "Blockchain & Fullstack Developer",
+    tagline: "Technical Architect | Smart Contract Developer | UI/UX Specialist",
+    summary: "Technical expert with deep blockchain knowledge and full-stack development skills. Specializes in building secure, user-friendly applications for the web3 ecosystem with expertise in JavaScript, Ruby on Rails, and Python.",
+    experience: [
+      {
+        title: "Full Stack Developer",
+        company: "FASCHCOM",
+        period: "August 2024 – February 2025",
+        achievements: [
+          "Design and develop robust APIs for integration with third-party trading platforms",
+          "Collaborate with multiple teams to launch robust products",
+          "Analyze and troubleshoot integration issues, ensuring seamless connectivity"
+        ]
+      },
+      {
+        title: "Backend Developer",
+        company: "VOSYN",
+        period: "May 2024 – August 2024",
+        achievements: [
+          "Design and develop robust APIs for integration with third-party streaming platforms",
+          "Collaborate with ML/AI teams on core technologies",
+          "Implement best practices for API security and scalability"
+        ]
+      },
+      {
+        title: "SUI ON CAMPUS Hackathon",
+        company: "Winner",
+        period: "2023",
+        achievements: [
+          "Design and Develop Smart Contracts on SUI blockchain",
+          "Write Seamless Backend to Integrate with SUI devnet and mainnet",
+          "Lead the development team to success"
+        ]
+      }
+    ],
+    skills: ["JavaScript", "React", "TypeScript", "Solidity", "Node.js", "Ruby on Rails", "MongoDB", "PostgreSQL", "Smart Contract Development"],
+    education: "B.Eng in Computer Engineering (University of UYO, Ongoing)",
+    socials: {
+      twitter: "devtombest",
+      github: "devtombest",
+      email: "tomudoh258@email.com"
+    },
+    imageUrl: "/tom.jpg"
+  },
+  "peneildev": {
+    name: "Peniel Ben",
+    role: "Backend & Blockchain Developer",
+    tagline: "Backend Expert | Blockchain Developer | Automation Specialist",
+    summary: "Computer Science student at the University of Uyo with expertise in backend development, REST API management, and web automation. Experienced in blockchain development for Ethereum and Solana platforms.",
+    experience: [
+      {
+        title: "Backend Development & API Engineer",
+        company: "Freelance",
+        period: "Present",
+        achievements: [
+          "Designed and maintained scalable backend architectures for web applications",
+          "Developed RESTful APIs using Django and FastAPI to enhance system interoperability",
+          "Optimized database performance and implemented security best practices"
+        ]
+      },
+      {
+        title: "Blockchain Developer",
+        company: "Projects",
+        period: "Present",
+        achievements: [
+          "Developed secure Ethereum smart contracts using Vyper and Web3.py",
+          "Built Solana dApps using Python SDK for decentralized applications",
+          "Integrated blockchain solutions with web applications"
+        ]
+      }
+    ],
+    skills: ["Python", "Django", "FastAPI", "MySQL", "PostgreSQL", "Ethereum", "Solana", "Web Scraping", "Automation", "Smart Contracts"],
+    education: "B.Sc. in Computer Science (University of Uyo, Ongoing)",
+    socials: {
+      github: "Penivera",
+      linkedin: "peniel-ben",
+      email: "penielben40@gmail.com",
+      phone: "+2348078617821"
+    },
+    imageUrl: "/peniel.jpeg"
+  },
+  "nsikakzion": {
+    name: "Nsikak Zion",
+    role: "Sales Lead",
+    tagline: "Growth Strategist | Partnership Builder | Marketing Professional",
+    summary: "Highly driven engineering school graduate and ambitious maintenance professional, with a proven history of exceeding goals and achieving high client satisfaction ratings in both technical and sales environments.",
+    experience: [
+      {
+        title: "Supervisor",
+        company: "Nuel Relief Ventures",
+        period: "Present",
+        achievements: [
+          "Lead marketing initiatives and logistics operations",
+          "Manage Point Of Service operations",
+          "Create strategic partnerships with key stakeholders"
+        ]
+      },
+      {
+        title: "Internship",
+        company: "Azimarine",
+        period: "Past",
+        achievements: [
+          "Operation of lathe machine and surface grinding",
+          "Drilling operations and machine maintenance",
+          "Technical support and troubleshooting"
+        ]
+      }
+    ],
+    skills: ["Maintenance & Safety", "Machine Operations", "Marketing", "Communication", "Leadership"],
+    education: "National Diploma from National Metallurgical Training Institute (3.69 CGPA)",
+    socials: {
+      email: "Nsikakzion8@gmail.com",
+      phone: "+2349122399178"
+    },
+    imageUrl: "/nsikak.jpeg"
+  },
+  "versatilekuma": {
+    name: "Joyce Kuma",
+    role: "Content Writer",
+    tagline: "Content Creator | Digital Marketer | Brand Storyteller",
+    summary: "Multifaceted content writer and digital marketer with a strong grip on Web3, tech, and brand storytelling. Specializes in turning ideas into powerful written content that converts, educates, and builds online presence across platforms.",
+    skills: ["Web3 Content", "Technical Writing", "Brand Storytelling", "Digital Marketing", "SEO Optimization"],
+    socials: {},
+    imageUrl: "/kuma.jpeg"
+  },
+  "omega": {
+    name: "Iniobong Ikoh",
+    role: "Graphic Designer",
+    tagline: "Visual Communicator | Brand Identity Expert | Creative Artist",
+    summary: "Skilled graphic designer with four years of hands-on experience in visual communication. Specialized in creating captivating designs that are not only eye-catching but also convey a brand's existence and message effectively.",
+    experience: [
+      {
+        title: "Graphic Designer",
+        company: "308 Designs",
+        period: "Present",
+        achievements: [
+          "Created unique and memorable brand identities",
+          "Designed print materials, social media graphics, and marketing collateral",
+          "Developed visual systems for cohesive brand presence"
+        ]
+      }
+    ],
+    skills: ["Adobe Photoshop", "Adobe Illustrator", "Corel Draw", "Brand Identity", "Social Media Graphics", "Print Design"],
+    socials: {
+      email: "lilzeese@gmail.com",
+      phone: "+234 814 1812 209"
+    },
+    imageUrl: "/omega.jpeg"
+  },
+  "godswill": {
+    name: "Godswill Ezeh",
+    role: "Marketing Director",
+    tagline: "Strategic Marketer | Team Leader | Sales Professional",
+    summary: "Experienced marketing professional with expertise in digital marketing, field operations, and team leadership. Proven success in building relationships, negotiating deals, and closing sales in high-tech marketing organizations.",
+    experience: [
+      {
+        title: "Head of Marketing and Recruitment",
+        company: "CHARIS REALTY COURT",
+        period: "2024 – Present",
+        achievements: [
+          "Train and mobilize marketers to achieve company sales goals",
+          "Create strategic frontiers on sales boost and innovative ideas",
+          "Assist CEO in business development activities"
+        ]
+      },
+      {
+        title: "Head of Affiliate Marketing and Partnerships",
+        company: "BLUEPRINT AFRICA & PHENOM EDUTECH",
+        period: "Nov 2022 – June 2024",
+        achievements: [
+          "Raised 300 affiliates from 5 major cities in Nigeria contributing to 90% of sales targets",
+          "Raised $25,000 annually from direct sales partnerships",
+          "Established 50 general partners annually for increased visibility"
+        ]
+      }
+    ],
+    skills: ["Digital Marketing", "Social Media Marketing", "Email Marketing", "Field Marketing", "Customer Service", "Brand Development"],
+    education: "Akwa Ibom State University (B.Sc Economics, 2nd class Upper)",
+    socials: {
+      email: "ezehgodswill@gmail.com",
+      phone: "+234 704 881 8130"
+    },
+    imageUrl: "/eze.jpeg"
+  }
+};
+
+// Update the TeamMemberCard component to handle video files
 const TeamMemberCard = ({ 
   name, 
   role, 
   description, 
   imageUrl, 
   twitterHandle, 
-  delay 
+  delay,
+  onClick
 }: { 
   name: string, 
   role: string, 
   description: string, 
   imageUrl: string, 
   twitterHandle: string, 
-  delay: number 
+  delay: number,
+  onClick: () => void 
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const isVideo = imageUrl.endsWith('.mp4');
 
   return (
     <motion.div
@@ -29,28 +260,108 @@ const TeamMemberCard = ({
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.6, delay }}
-      className="bg-white/10 backdrop-blur-lg rounded-xl p-6 flex flex-col items-center"
+      className="bg-white/10 backdrop-blur-lg rounded-xl p-6 flex flex-col items-center cursor-pointer hover:bg-white/15 transition-all duration-300"
+      onClick={onClick}
+      whileHover={{ y: -5 }}
     >
       <div className="w-40 h-40 rounded-full overflow-hidden mb-6 ring-4 ring-blue-500/30">
-        <img 
-          src={imageUrl} 
-          alt={name} 
-          className="w-full h-full object-cover"
-        />
+        {isVideo ? (
+          <video 
+            src={imageUrl} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <img 
+            src={imageUrl} 
+            alt={name} 
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
       <h3 className="text-xl font-bold mb-1 text-white">{name}</h3>
-      <p className="text-blue-400 mb-4">{role}</p>
+      <p className="text-white mb-4">{role}</p>
       <p className="text-gray-300 text-center mb-5">{description}</p>
-      <a 
-        href={`https://twitter.com/${twitterHandle}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
-      >
+      <div className="flex items-center text-gray-300 hover:text-white transition-colors">
         <Twitter className="w-5 h-5 mr-2" />
         @{twitterHandle}
-      </a>
+      </div>
     </motion.div>
+  );
+};
+
+// Update the TeamMemberPopup component to handle video files
+const TeamMemberPopup = ({ member, onClose }: { member: any, onClose: () => void }) => {
+  if (!member) return null;
+  
+  const isVideo = member.imageUrl.endsWith('.mp4');
+  
+  return (
+    <AnimatePresence>
+      <motion.div 
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div 
+          className="bg-gradient-to-br from-cryptobliss-dark/95 to-black/95 border border-cryptobliss-primary/20 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 relative"
+          initial={{ scale: 0.9, y: 20, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          exit={{ scale: 0.9, y: 20, opacity: 0 }}
+          transition={{ type: "spring", damping: 20, stiffness: 300 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button 
+            onClick={onClose}
+            className="absolute top-4 right-4 text-gray-400 hover:text-white"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          
+          <div className="flex flex-col md:flex-row md:items-start gap-8">
+            <div className="flex-shrink-0">
+              <div className="w-40 h-40 rounded-full overflow-hidden ring-4 ring-blue-500/30 mx-auto">
+                {isVideo ? (
+                  <video 
+                    src={member.imageUrl} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <img 
+                    src={member.imageUrl} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+            </div>
+            
+            {/* Rest of the popup content remains the same */}
+            <div className="flex-grow">
+              <h2 className="text-3xl font-bold mb-1 text-white">{member.name}</h2>
+              <p className="text-xl text-cryptobliss-primary mb-2">{member.role}</p>
+              <p className="text-gray-300 mb-4">{member.tagline}</p>
+              
+              <div className="bg-white/5 p-4 rounded-lg mb-6">
+                <h3 className="text-xl font-semibold mb-2">Professional Summary</h3>
+                <p className="text-gray-300">{member.summary}</p>
+              </div>
+              
+              {/* ... Rest of the popup content ... */}
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
@@ -59,6 +370,15 @@ const AboutPage: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  // State to track which team member's popup should be shown
+  const [selectedMember, setSelectedMember] = useState<string | null>(null);
+  
+  // Function to get member details
+  const getSelectedMemberDetails = () => {
+    if (!selectedMember) return null;
+    return teamMembersDetails[selectedMember as keyof typeof teamMembersDetails];
+  };
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -87,7 +407,7 @@ const AboutPage: React.FC = () => {
           className="bg-white/10 backdrop-blur-lg rounded-xl p-8"
         >
           <div className="flex items-center mb-6">
-            <Target className="w-10 h-10 text-blue-400 mr-4" />
+            <Target className="w-10 h-10 text-white mr-4" />
             <h2 className="text-2xl font-bold">Our Mission</h2>
           </div>
           <p className="text-gray-300">
@@ -105,7 +425,7 @@ const AboutPage: React.FC = () => {
           className="bg-white/10 backdrop-blur-lg rounded-xl p-8"
         >
           <div className="flex items-center mb-6">
-            <Globe className="w-10 h-10 text-blue-400 mr-4" />
+            <Globe className="w-10 h-10 text-white mr-4" />
             <h2 className="text-2xl font-bold">Our Vision</h2>
           </div>
           <p className="text-gray-300">
@@ -128,7 +448,7 @@ const AboutPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center">
             <div className="bg-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-              <Users className="w-8 h-8 text-blue-400" />
+              <Users className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-3">Community-Driven</h3>
             <p className="text-gray-300">
@@ -138,7 +458,7 @@ const AboutPage: React.FC = () => {
           
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center">
             <div className="bg-purple-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-              <Lightbulb className="w-8 h-8 text-purple-400" />
+              <Lightbulb className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-3">Educational Excellence</h3>
             <p className="text-gray-300">
@@ -148,7 +468,7 @@ const AboutPage: React.FC = () => {
           
           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center">
             <div className="bg-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-              <Globe className="w-8 h-8 text-blue-400" />
+              <Globe className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-3">Regional Focus</h3>
             <p className="text-gray-300">
@@ -210,70 +530,101 @@ const AboutPage: React.FC = () => {
         <h2 className="text-3xl font-bold mb-4 text-center">Meet Our Core Team</h2>
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
           The passionate individuals driving CRYPTOBLISS forward, dedicated to empowering the web3 revolution across Africa and beyond.
+          <span className="block mt-2 text-sm text-blue-400">Click on any team member to learn more</span>
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* CEO Card - Standalone and Prominent */}
+        <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-lg mx-auto"
+          >
+            <TeamMemberCard 
+              name="Mark Udeh" 
+              role="Founder & CEO" 
+              description="Visionary leader with a passion for blockchain adoption in Africa. Mark brings strategic direction and entrepreneurial spirit to CRYPTOBLISS." 
+              imageUrl={teamMembersDetails.markudeh_.imageUrl} 
+              twitterHandle="markudeh_" 
+              delay={0.1}
+              onClick={() => setSelectedMember("markudeh_")}
+            />
+          </motion.div>
+        </div>
+        
+        {/* Other Team Members - 3x2 Grid */}
+        <h3 className="text-2xl font-semibold mb-8 text-center">Core Team</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <TeamMemberCard 
-            name="Mark Udeh" 
-            role="Founder & CEO" 
-            description="Visionary leader with a passion for blockchain adoption in Africa. Mark brings strategic direction and entrepreneurial spirit to CRYPTOBLISS." 
-            imageUrl="https://images.unsplash.com/photo-1639628735078-ed2f038a193e?w=600&auto=format&fit=crop&q=60" 
-            twitterHandle="markudeh_" 
-            delay={0.1} 
-          />
-          
-          <TeamMemberCard 
-            name="Tom" 
+            name="Tom Udoh" 
             role="Blockchain & Fullstack Developer" 
             description="Technical genius behind our platform. Tom combines deep blockchain knowledge with full-stack development skills to build robust solutions." 
-            imageUrl="https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?w=600&auto=format&fit=crop&q=60" 
+            imageUrl={teamMembersDetails.devtombest.imageUrl} 
             twitterHandle="devtombest" 
-            delay={0.2} 
+            delay={0.2}
+            onClick={() => setSelectedMember("devtombest")}
           />
           
           <TeamMemberCard 
-            name="Peneil" 
+            name="Peniel Ben" 
             role="Backend & Blockchain Developer" 
-            description="Architectural mastermind implementing secure and scalable blockchain solutions. Peneil's expertise ensures our platform runs flawlessly." 
-            imageUrl="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=600&auto=format&fit=crop&q=60" 
+            description="Architectural mastermind implementing secure and scalable blockchain solutions. Peniel's expertise ensures our platform runs flawlessly." 
+            imageUrl={teamMembersDetails.peneildev.imageUrl} 
             twitterHandle="peneildev" 
-            delay={0.3} 
+            delay={0.3}
+            onClick={() => setSelectedMember("peneildev")}
           />
           
           <TeamMemberCard 
             name="Nsikak Zion" 
             role="Sales Lead" 
             description="Strategic partnership builder with exceptional communication skills. Nsikak drives adoption and creates valuable connections across the ecosystem." 
-            imageUrl="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60" 
+            imageUrl={teamMembersDetails.nsikakzion.imageUrl} 
             twitterHandle="nsikakzion" 
-            delay={0.4} 
+            delay={0.4}
+            onClick={() => setSelectedMember("nsikakzion")}
           />
+          
           <TeamMemberCard 
-            name="Nsikak Zion" 
-            role="Sales Lead" 
-            description="Strategic partnership builder with exceptional communication skills. Nsikak drives adoption and creates valuable connections across the ecosystem." 
-            imageUrl="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60" 
-            twitterHandle="nsikakzion" 
-            delay={0.4} 
+            name="Joyce Kuma" 
+            role="Content Writer" 
+            description="Talented wordsmith crafting compelling Web3 narratives and educational content that resonates with both newcomers and experienced blockchain enthusiasts." 
+            imageUrl={teamMembersDetails.versatilekuma.imageUrl} 
+            twitterHandle="versatilejkuma" 
+            delay={0.5}
+            onClick={() => setSelectedMember("versatilekuma")}
           />
+          
           <TeamMemberCard 
-            name="Nsikak Zion" 
-            role="Sales Lead" 
-            description="Strategic partnership builder with exceptional communication skills. Nsikak drives adoption and creates valuable connections across the ecosystem." 
-            imageUrl="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60" 
-            twitterHandle="nsikakzion" 
-            delay={0.4} 
+            name="Iniobong Ikoh" 
+            role="Graphic Designer" 
+            description="Creative genius behind our visual identity. Iniobong creates stunning designs that capture the essence of our brand and engage our community." 
+            imageUrl={teamMembersDetails.omega.imageUrl} 
+            twitterHandle="308designs" 
+            delay={0.6}
+            onClick={() => setSelectedMember("omega")}
           />
+          
           <TeamMemberCard 
-            name="Nsikak Zion" 
-            role="Sales Lead" 
-            description="Strategic partnership builder with exceptional communication skills. Nsikak drives adoption and creates valuable connections across the ecosystem." 
-            imageUrl="https://images.unsplash.com/photo-1640951613773-54706e06851d?w=600&auto=format&fit=crop&q=60" 
-            twitterHandle="nsikakzion" 
-            delay={0.4} 
+            name="Godswill Ezeh" 
+            role="Marketing Director" 
+            description="Strategic marketing expert who drives growth and adoption through innovative campaigns and strong partnership development." 
+            imageUrl={teamMembersDetails.godswill.imageUrl} 
+            twitterHandle="godswillezeh" 
+            delay={0.7}
+            onClick={() => setSelectedMember("godswill")}
           />
         </div>
       </motion.div>
+
+      {/* Team Member Popup */}
+      {selectedMember && (
+        <TeamMemberPopup 
+          member={getSelectedMemberDetails()}
+          onClose={() => setSelectedMember(null)}
+        />
+      )}
     </div>
   );
 };
