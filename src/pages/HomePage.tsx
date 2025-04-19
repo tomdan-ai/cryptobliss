@@ -59,13 +59,16 @@ function HomePage() {
             Your gateway to the decentralized economy. Join CRYPTOBLISS and unlock the power of Web3 with education, adoption, and utilization of blockchain technology.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <motion.button
+            <motion.a
+              href="https://chat.whatsapp.com/JD1OpDksrGT7iDtKuDeP6b"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-cryptobliss-primary hover:bg-cryptobliss-primary/90 text-cryptobliss-dark font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300"
             >
               Join Our Community
-            </motion.button>
+            </motion.a>
             <Link to="/about">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -153,13 +156,16 @@ function HomePage() {
             Our purpose is to empower individuals and organizations to thrive in the decentralized economy. 
             Join us today and experience the bliss of web3!
           </p>
-          <motion.button
+            <motion.a
+            href="https://chat.whatsapp.com/JD1OpDksrGT7iDtKuDeP6b"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-cryptobliss-dark font-bold py-3 px-8 rounded-full text-lg transition-all duration-300"
-          >
+            className="inline-block bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-cryptobliss-dark font-bold py-3 px-8 rounded-full text-lg transition-all duration-300"
+            >
             Get Started Now
-          </motion.button>
+            </motion.a>
         </motion.div>
       </div>
     </div>
