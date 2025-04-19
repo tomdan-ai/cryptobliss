@@ -189,7 +189,7 @@ const ContactPage: React.FC = () => {
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Follow on Twitter</h3>
                   <a 
-                    href="https://x.com/thecryptoblist" 
+                    href="https://x.com/CRYPTOBLISS_01"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-300 hover:text-white transition-colors flex items-center"
