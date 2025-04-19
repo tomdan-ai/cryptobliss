@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-5">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.png" alt="CRYPTOBLISS" className="h-10 w-auto" />
+              <img src="/wlogo.png" alt="CRYPTOBLISS" className="h-14 w-auto" />
               <span className="text-2xl font-bold bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-white bg-clip-text">
                 CRYPTOBLISS
               </span>
@@ -111,7 +111,7 @@ const Layout: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <img src="/logo.png" alt="CRYPTOBLISS" className="h-8 w-auto" />
+                <img src="/wlogo.png" alt="CRYPTOBLISS" className="h-12 w-auto" />
                 <span className="text-xl font-bold bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-white bg-clip-text">
                   CRYPTOBLISS
                 </span>
