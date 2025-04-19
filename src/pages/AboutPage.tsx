@@ -5,7 +5,7 @@ import { Target, Users, Globe, Lightbulb, CheckCircle, ExternalLink, Twitter, X,
 
 // Team member detailed information
 const teamMembersDetails = {
-  "markudeh_": {
+  "iammarkudeh": {
     name: "Mark Udeh",
     role: "Founder & CEO",
     tagline: "Web3 Reformist | Community Builder | Crypto Mentor | Digital Influencer",
@@ -87,7 +87,7 @@ const teamMembersDetails = {
     },
     imageUrl: "/tom.jpg"
   },
-  "peneildev": {
+  "Penivera001": {
     name: "Peniel Ben",
     role: "Backend & Blockchain Developer",
     tagline: "Backend Expert | Blockchain Developer | Automation Specialist",
@@ -229,7 +229,7 @@ const teamMembersDetails = {
   }
 };
 
-// Update the TeamMemberCard component to handle video files
+// Update the TeamMemberCard component to include clickable social links
 const TeamMemberCard = ({ 
   name, 
   role, 
@@ -285,15 +285,21 @@ const TeamMemberCard = ({
       <h3 className="text-xl font-bold mb-1 text-white">{name}</h3>
       <p className="text-white mb-4">{role}</p>
       <p className="text-gray-300 text-center mb-5">{description}</p>
-      <div className="flex items-center text-gray-300 hover:text-white transition-colors">
+      <a 
+        href={`https://twitter.com/${twitterHandle}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()} // Prevent card click when clicking Twitter link
+        className="flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+      >
         <Twitter className="w-5 h-5 mr-2" />
         @{twitterHandle}
-      </div>
+      </a>
     </motion.div>
   );
 };
 
-// Update the TeamMemberPopup component to handle video files
+// Update the TeamMemberPopup component to display all social links
 const TeamMemberPopup = ({ member, onClose }: { member: any, onClose: () => void }) => {
   if (!member) return null;
   
@@ -343,9 +349,53 @@ const TeamMemberPopup = ({ member, onClose }: { member: any, onClose: () => void
                   />
                 )}
               </div>
+              
+              {/* Social media links */}
+              <div className="mt-4 flex justify-center space-x-3">
+                {member.socials?.twitter && (
+                  <a 
+                    href={`https://twitter.com/${member.socials.twitter}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-500/20 p-2 rounded-full hover:bg-blue-500/40 transition-colors"
+                    title={`Twitter: @${member.socials.twitter}`}
+                  >
+                    <Twitter className="w-5 h-5 text-blue-400" />
+                  </a>
+                )}
+                
+                {member.socials?.github && (
+                  <a 
+                    href={`https://github.com/${member.socials.github}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-700/40 p-2 rounded-full hover:bg-gray-600/40 transition-colors"
+                    title={`GitHub: ${member.socials.github}`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-white">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </a>
+                )}
+                
+                {member.socials?.linkedin && (
+                  <a 
+                    href={`https://linkedin.com/in/${member.socials.linkedin.replace(/\s/g, '-').toLowerCase()}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-700/30 p-2 rounded-full hover:bg-blue-700/50 transition-colors"
+                    title={`LinkedIn: ${member.socials.linkedin}`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-blue-300">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
             
-            {/* Rest of the popup content remains the same */}
             <div className="flex-grow">
               <h2 className="text-3xl font-bold mb-1 text-white">{member.name}</h2>
               <p className="text-xl text-cryptobliss-primary mb-2">{member.role}</p>
@@ -356,7 +406,112 @@ const TeamMemberPopup = ({ member, onClose }: { member: any, onClose: () => void
                 <p className="text-gray-300">{member.summary}</p>
               </div>
               
-              {/* ... Rest of the popup content ... */}
+              {member.experience && (
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold mb-3">Experience</h3>
+                  <div className="space-y-4">
+                    {member.experience.map((exp: any, index: number) => (
+                      <div key={index} className="border-l-2 border-cryptobliss-primary/50 pl-4">
+                        <h4 className="font-bold text-white">{exp.title} - {exp.company}</h4>
+                        <p className="text-gray-400 text-sm mb-2">{exp.period}</p>
+                        <ul className="list-disc list-inside text-gray-300 space-y-1">
+                          {exp.achievements.map((achievement: string, i: number) => (
+                            <li key={i}>{achievement}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {member.skills && (
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold mb-2">Core Skills</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {member.skills.map((skill: string, index: number) => (
+                      <span 
+                        key={index}
+                        className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {member.education && (
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold mb-2">Education</h3>
+                  <p className="text-gray-300">{member.education}</p>
+                </div>
+              )}
+              
+              {member.socials && (
+                <div className="bg-white/5 p-4 rounded-lg">
+                  <h3 className="text-xl font-semibold mb-3">Connect</h3>
+                  <div className="space-y-2">
+                    {member.socials.twitter && (
+                      <a 
+                        href={`https://twitter.com/${member.socials.twitter}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
+                      >
+                        <Twitter className="w-5 h-5 mr-2" />
+                        @{member.socials.twitter}
+                      </a>
+                    )}
+                    {member.socials.linkedin && (
+                      <a 
+                        href={`https://linkedin.com/in/${member.socials.linkedin.replace(/\s/g, '-').toLowerCase()}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 mr-2">
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                          <rect x="2" y="9" width="4" height="12"></rect>
+                          <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        {member.socials.linkedin}
+                      </a>
+                    )}
+                    {member.socials.github && (
+                      <a 
+                        href={`https://github.com/${member.socials.github}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-300 hover:text-white transition-colors"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 mr-2">
+                          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        {member.socials.github}
+                      </a>
+                    )}
+                    {member.socials.email && (
+                      <a 
+                        href={`mailto:${member.socials.email}`}
+                        className="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
+                      >
+                        <Mail className="w-5 h-5 mr-2" />
+                        {member.socials.email}
+                      </a>
+                    )}
+                    {member.socials.phone && (
+                      <a 
+                        href={`tel:${member.socials.phone}`}
+                        className="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
+                      >
+                        <Phone className="w-5 h-5 mr-2" />
+                        {member.socials.phone}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
@@ -545,10 +700,10 @@ const AboutPage: React.FC = () => {
               name="Mark Udeh" 
               role="Founder & CEO" 
               description="Visionary leader with a passion for blockchain adoption in Africa. Mark brings strategic direction and entrepreneurial spirit to CRYPTOBLISS." 
-              imageUrl={teamMembersDetails.markudeh_.imageUrl} 
-              twitterHandle="markudeh_" 
+              imageUrl={teamMembersDetails.iammarkudeh.imageUrl} 
+              twitterHandle="iammarkudeh" 
               delay={0.1}
-              onClick={() => setSelectedMember("markudeh_")}
+              onClick={() => setSelectedMember("iammarkudeh")}
             />
           </motion.div>
         </div>
@@ -570,10 +725,10 @@ const AboutPage: React.FC = () => {
             name="Peniel Ben" 
             role="Backend & Blockchain Developer" 
             description="Architectural mastermind implementing secure and scalable blockchain solutions. Peniel's expertise ensures our platform runs flawlessly." 
-            imageUrl={teamMembersDetails.peneildev.imageUrl} 
-            twitterHandle="peneildev" 
+            imageUrl={teamMembersDetails.Penivera001.imageUrl} 
+            twitterHandle="Penivera001" 
             delay={0.3}
-            onClick={() => setSelectedMember("peneildev")}
+            onClick={() => setSelectedMember("Penivera001")}
           />
           
           <TeamMemberCard 
