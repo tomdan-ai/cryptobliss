@@ -6,6 +6,8 @@ import AboutPage from './pages/AboutPage';
 import FeaturesPage from './pages/FeaturesPage';
 import CommunityPage from './pages/CommunityPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="features" element={<FeaturesPage />} />
           <Route path="community" element={<CommunityPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="terms-of-service" element={<TermsOfServicePage />} />
         </Route>
       </Routes>
     </Router>
