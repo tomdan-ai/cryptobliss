@@ -129,7 +129,7 @@ const Layout: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://x.com/thecryptoblist" className="hover:text-cryptobliss-primary transition-colors">
+                  <a href="https://x.com/CRYPTOBLISS_01" className="hover:text-cryptobliss-primary transition-colors">
                     Twitter
                   </a>
                 </li>
@@ -164,14 +164,14 @@ const Layout: React.FC = () => {
               <h4 className="text-lg font-bold mb-4 text-white">Legal</h4>
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li>
-                  <a href="#" className="hover:text-cryptobliss-primary transition-colors">
+                  <Link to="/privacy-policy" className="hover:text-cryptobliss-primary transition-colors">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-cryptobliss-primary transition-colors">
+                  <Link to="/terms-of-service" className="hover:text-cryptobliss-primary transition-colors">
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
