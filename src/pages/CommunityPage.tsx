@@ -57,7 +57,7 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-white mb-2">1000+</div>
+          <div className="text-4xl font-bold text-white mb-2">500+</div>
           <div className="text-gray-300">Community Members</div>
         </motion.div>
         
@@ -67,8 +67,8 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-white mb-2">20+</div>
-          <div className="text-gray-300">Countries Represented</div>
+          <div className="text-4xl font-bold text-white mb-2">50+</div>
+          <div className="text-gray-300">Testimonies</div>
         </motion.div>
         
         <motion.div
@@ -77,7 +77,7 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-white mb-2">50+</div>
+          <div className="text-4xl font-bold text-white mb-2">20+</div>
           <div className="text-gray-300">Expert Contributors</div>
         </motion.div>
         
@@ -87,7 +87,7 @@ const CommunityPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="bg-white/5 backdrop-blur-lg rounded-xl p-6 text-center"
         >
-          <div className="text-4xl font-bold text-white mb-2">100+</div>
+          <div className="text-4xl font-bold text-white mb-2">5+</div>
           <div className="text-gray-300">Monthly Events</div>
         </motion.div>
       </div>
@@ -169,7 +169,7 @@ const CommunityPage: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8 text-center">Upcoming Community Events</h2>
         
         <div className="space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
+          {/* <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
             <div className="flex items-center mb-4 md:mb-0">
               <div className="bg-blue-900 text-white rounded-lg p-3 mr-4 text-center">
                 <div className="text-sm">APR</div>
@@ -236,6 +236,100 @@ const CommunityPage: React.FC = () => {
             >
               Register
             </motion.button>
+          </div> */}
+
+          {/* Anniversary Event */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
+            <div className="flex items-center mb-4 md:mb-0">
+              <div className="bg-blue-900 text-white rounded-lg p-3 mr-4 text-center">
+                <div className="text-sm">APR</div>
+                <div className="text-2xl font-bold">25</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">Solana All Stars Anniversary</h3>
+                <div className="flex flex-col text-gray-400 text-sm mt-1">
+                  <span className="flex items-center">
+                    <Globe className="w-4 h-4 mr-2" />
+                    <span>Uyo, Nigeria</span>
+                  </span>
+                  <span className="text-yellow-400 mt-1 font-medium">Less than a week to go and you haven't registered yet? Cake and food go dey!</span>
+                </div>
+              </div>
+            </div>
+            <motion.a
+              href="https://lu.ma/q5s8k4jx?tk=ER5EM2"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full text-sm transition-colors duration-300"
+            >
+              Register Now
+            </motion.a>
+          </div>
+          
+          {/* ACES WEEK 2025 */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
+            <div className="flex items-center mb-4 md:mb-0">
+              <div className="bg-purple-900 text-white rounded-lg p-3 mr-4 text-center">
+                <div className="text-sm">MAY</div>
+                <div className="text-2xl font-bold">05</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">ACES WEEK 2025 Tech Day</h3>
+                <div className="flex flex-col text-gray-400 text-sm mt-1">
+                  <span className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    <span>Uyo, Nigeria</span>
+                  </span>
+                  <span className="text-green-400 mt-1 font-medium">
+                    In partnership with Interswitch Developer Community
+                  </span>
+                </div>
+              </div>
+            </div>
+            <motion.a
+              href="https://bit.ly/acestechday"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full text-sm transition-colors duration-300"
+            >
+              RSVP Now
+            </motion.a>
+          </div>
+          
+          {/* Avalanche Developer Bootcamp */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
+            <div className="flex items-center mb-4 md:mb-0">
+              <div className="bg-red-900 text-white rounded-lg p-3 mr-4 text-center flex flex-col">
+                <div className="text-sm">APR</div>
+                <div className="text-xl font-bold">21-25</div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">Intro to Blockchain – Avalanche Developer Bootcamp</h3>
+                <div className="flex flex-col text-gray-400 text-sm mt-1">
+                  <span className="flex items-center">
+                    <Globe className="w-4 h-4 mr-2" />
+                    <span>Online | 18:00–20:00 CET</span>
+                  </span>
+                  <span className="text-blue-400 mt-1 font-medium">
+                    Road to Summit Hackathon - Get Certified!
+                  </span>
+                </div>
+              </div>
+            </div>
+            <motion.a
+              href="https://lu.ma/ekk8uvs9"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full text-sm transition-colors duration-300"
+            >
+              Register Free
+            </motion.a>
           </div>
         </div>
       </motion.div>
@@ -265,7 +359,7 @@ const CommunityPage: React.FC = () => {
           </motion.a>
           
           <motion.a
-            href="https://x.com/thecryptoblist"
+            href="https://x.com/CRYPTOBLISS_01"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
