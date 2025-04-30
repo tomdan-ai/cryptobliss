@@ -8,6 +8,7 @@ import CommunityPage from './pages/CommunityPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
+import ThankYouPage from './pages/ThankYouPage'; // Import the new page
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="thank-you" element={<ThankYouPage />} /> {/* Add the route */}
         </Route>
       </Routes>
     </Router>

@@ -41,7 +41,7 @@ const ContactPage: React.FC = () => {
         >
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
           <form 
-            action="https://formspree.io/f/xwpovrqn" 
+            action="https://formspree.io/f/mzzrdjab" 
             method="POST" 
             className="space-y-6"
           >
