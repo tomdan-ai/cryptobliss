@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Mail, MessageSquare, Send, MapPin, ExternalLink } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
@@ -9,27 +8,10 @@ const ContactPage: React.FC = () => {
     email: '',
     message: ''
   });
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus('success');
-      setFormState({ name: '', email: '', message: '' });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setFormStatus('idle');
-      }, 3000);
-    }, 1000);
   };
 
   return (
@@ -58,7 +40,11 @@ const ContactPage: React.FC = () => {
           className="bg-white/10 backdrop-blur-lg rounded-xl p-8"
         >
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form 
+            action="https://formspree.io/f/xwpovrqn" 
+            method="POST" 
+            className="space-y-6"
+          >
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">Your Name</label>
               <input
@@ -105,32 +91,11 @@ const ContactPage: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              disabled={formStatus === 'submitting'}
-              className={`w-full bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 flex items-center justify-center ${formStatus === 'submitting' ? 'opacity-70' : ''}`}
+              className={`w-full bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 flex items-center justify-center`}
             >
-              {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+              Send Message 
               <Send className="w-5 h-5 ml-2" />
             </motion.button>
-            
-            {formStatus === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-green-400 text-center mt-4"
-              >
-                Thank you! Your message has been sent successfully.
-              </motion.div>
-            )}
-            
-            {formStatus === 'error' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-red-400 text-center mt-4"
-              >
-                Oops! Something went wrong. Please try again later.
-              </motion.div>
-            )}
           </form>
         </motion.div>
 
