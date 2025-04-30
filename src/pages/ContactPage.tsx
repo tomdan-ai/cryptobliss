@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MessageSquare, Send, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, MessageSquare, Send, MapPin, ExternalLink, Loader2 } from 'lucide-react'; // Added Loader2
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const ContactPage: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -8,28 +9,47 @@ const ContactPage: React.FC = () => {
     email: '',
     message: ''
   });
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'submitting' | 'error'>('idle'); // State for submission status
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
+  // Handle form submission with AJAX
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default HTML form submission
+    setSubmissionStatus('submitting');
+
+    try {
+      const response = await fetch("https://formspree.io/f/mzzrdjab", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formState)
+      });
+
+      if (response.ok) {
+        // Submission successful, navigate to thank you page
+        setFormState({ name: '', email: '', message: '' }); // Clear form
+        navigate('/thank-you'); // Redirect
+      } else {
+        // Handle server errors from Formspree
+        setSubmissionStatus('error');
+        console.error("Form submission failed:", await response.json());
+      }
+    } catch (error) {
+      // Handle network errors
+      setSubmissionStatus('error');
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-12">
-      {/* Contact Hero */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center max-w-4xl mx-auto mb-16"
-      >
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-white bg-clip-text">
-          Let's Connect
-        </h1>
-        <p className="text-xl text-gray-300">
-          Have questions or want to join our community? Reach out and let's revolutionize the web3 space together!
-        </p>
-      </motion.div>
+      {/* ... existing hero section ... */}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
         {/* Contact Form */}
@@ -40,12 +60,13 @@ const ContactPage: React.FC = () => {
           className="bg-white/10 backdrop-blur-lg rounded-xl p-8"
         >
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+          {/* Remove action and method, add onSubmit */}
           <form 
-            action="https://formspree.io/f/mzzrdjab" 
-            method="POST" 
+            onSubmit={handleSubmit} 
             className="space-y-6"
           >
-            <div>
+            {/* ... existing name input ... */}
+             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">Your Name</label>
               <input
                 type="text"
@@ -54,11 +75,13 @@ const ContactPage: React.FC = () => {
                 value={formState.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white"
+                disabled={submissionStatus === 'submitting'} // Disable during submission
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white disabled:opacity-50"
                 placeholder="Enter your name"
               />
             </div>
             
+            {/* ... existing email input ... */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">Your Email</label>
               <input
@@ -68,12 +91,14 @@ const ContactPage: React.FC = () => {
                 value={formState.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white"
+                disabled={submissionStatus === 'submitting'} // Disable during submission
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white disabled:opacity-50"
                 placeholder="Enter your email"
               />
             </div>
             
-            <div>
+            {/* ... existing message textarea ... */}
+             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">Your Message</label>
               <textarea
                 id="message"
@@ -82,33 +107,53 @@ const ContactPage: React.FC = () => {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white"
+                disabled={submissionStatus === 'submitting'} // Disable during submission
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white disabled:opacity-50"
                 placeholder="How can we help you?"
               />
             </div>
             
+            {/* Display error message if submission fails */}
+            {submissionStatus === 'error' && (
+              <p className="text-red-400 text-sm text-center">
+                Sorry, there was an error sending your message. Please try again later or contact us directly.
+              </p>
+            )}
+
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={submissionStatus !== 'submitting' ? { scale: 1.05 } : {}}
+              whileTap={submissionStatus !== 'submitting' ? { scale: 0.95 } : {}}
               type="submit"
-              className={`w-full bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 flex items-center justify-center`}
+              disabled={submissionStatus === 'submitting'} // Disable button during submission
+              className={`w-full bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed`}
             >
-              Send Message 
-              <Send className="w-5 h-5 ml-2" />
+              {submissionStatus === 'submitting' ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Send Message 
+                  <Send className="w-5 h-5 ml-2" />
+                </>
+              )}
             </motion.button>
           </form>
         </motion.div>
 
-        {/* Contact Info */}
-        <motion.div
+        {/* ... existing contact info section ... */}
+         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col justify-between"
         >
-          <div>
+          {/* ... existing contact details ... */}
+           <div>
             <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
             <div className="space-y-8">
+              {/* ... Email ... */}
               <div className="flex items-start">
                 <div className="bg-blue-500/20 rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
                   <Mail className="w-6 h-6 text-white" />
@@ -124,6 +169,7 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
+              {/* ... WhatsApp ... */}
               <div className="flex items-start">
                 <div className="bg-green-500/20 rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
                   <MessageSquare className="w-6 h-6 text-green-400" />
@@ -145,6 +191,7 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
+              {/* ... Twitter ... */}
               <div className="flex items-start">
                 <div className="bg-blue-500/20 rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white">
@@ -170,6 +217,7 @@ const ContactPage: React.FC = () => {
             </div>
           </div>
 
+          {/* ... Focus Region ... */}
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -188,17 +236,19 @@ const ContactPage: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* FAQ Section */}
-      <motion.div
+      {/* ... existing FAQ section ... */}
+       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-12 mb-20"
       >
-        <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+        {/* ... FAQ content ... */}
+         <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6">
+          {/* ... FAQ items ... */}
+           <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6">
             <h3 className="text-xl font-bold mb-3">How can I join CRYPTOBLISS?</h3>
             <p className="text-gray-300">
               You can join our community by clicking on the WhatsApp link above or following us on Twitter. 
