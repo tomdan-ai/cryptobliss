@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import WorkshopPopup from './WorkshopPopup'; 
+import { useWorkshopPopup } from '../hooks/useWorkshopPopup';
 
 const Layout: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { showPopup, closePopup } = useWorkshopPopup();
 
   return (
     <div className="min-h-screen text-white relative">
@@ -13,6 +16,9 @@ const Layout: React.FC = () => {
         <div className="absolute w-[500px] h-[500px] bg-cryptobliss-primary/30 rounded-full blur-3xl -top-48 -left-24 animate-pulse" />
         <div className="absolute w-[400px] h-[400px] bg-cryptobliss-secondary/30 rounded-full blur-3xl top-1/2 right-0 animate-pulse delay-1000" />
       </div>
+
+      {/* Workshop Popup */}
+      {showPopup && <WorkshopPopup onClose={closePopup} />}
 
       {/* Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-cryptobliss-dark/80 backdrop-blur-lg">
