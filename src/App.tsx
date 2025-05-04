@@ -8,7 +8,8 @@ import CommunityPage from './pages/CommunityPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
-import ThankYouPage from './pages/ThankYouPage'; // Import the new page
+import ThankYouPage from './pages/ThankYouPage';
+import WorkshopPage from './pages/WorkshopPage'; // Import the new page
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="terms-of-service" element={<TermsOfServicePage />} />
-          <Route path="thank-you" element={<ThankYouPage />} /> {/* Add the route */}
+          <Route path="thank-you" element={<ThankYouPage />} />
+          <Route path="workshop" element={<WorkshopPage />} /> {/* Add the new route */}
         </Route>
       </Routes>
     </Router>
