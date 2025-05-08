@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, Award, Users } from 'lucide-react';
+import { X, Calendar, Award, Users, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface WorkshopPopupProps {
@@ -51,10 +51,14 @@ const WorkshopPopup: React.FC<WorkshopPopupProps> = ({ onClose }) => {
               <Calendar className="w-5 h-5 mr-2 text-cryptobliss-primary" />
               <span>May 15-19, 2025</span>
             </div>
+            <div className="flex items-center text-gray-300 mb-2">
+              <Clock className="w-5 h-5 mr-2 text-cryptobliss-primary" />
+              <span>8:00 PM - 9:30 PM WAT</span>
+            </div>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <Award className="w-4 h-4 mr-2 text-cryptobliss-primary flex-shrink-0 mt-1" />
-                <span className="text-gray-300">$500 in crypto prizes for top participants</span>
+                <span className="text-gray-300">Custom profile banners for top participants</span>
               </li>
               <li className="flex items-start">
                 <Users className="w-4 h-4 mr-2 text-cryptobliss-primary flex-shrink-0 mt-1" />
