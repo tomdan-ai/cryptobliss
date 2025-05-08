@@ -141,7 +141,7 @@ const WorkshopPage: React.FC = () => {
           </div>
           <div className="flex items-center text-gray-300">
             <Clock className="w-5 h-5 mr-2 text-cryptobliss-primary" />
-            <span>2 hours daily (10:00 AM - 12:00 PM WAT)</span>
+            <span>Evening sessions (8:00 PM - 9:30 PM WAT)</span>
           </div>
         </motion.div>
 
@@ -155,23 +155,31 @@ const WorkshopPage: React.FC = () => {
           <ul className="space-y-4">
             <li className="flex items-start">
               <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-              <span className="text-gray-300">Blockchain fundamentals and how they're reshaping Africa's economy</span>
+              <span className="text-gray-300">How to build your Web3 identity from scratch</span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-              <span className="text-gray-300">Setting up secure wallets and navigating decentralized applications</span>
+              <span className="text-gray-300">Growth hacking strategies tailored for X (Twitter)</span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-              <span className="text-gray-300">DeFi protocols and how to participate safely in yield opportunities</span>
+              <span className="text-gray-300">Personal branding for credibility & visibility</span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-              <span className="text-gray-300">NFT creation, trading and monetization strategies</span>
+              <span className="text-gray-300">Smart engagement tactics that get noticed</span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-              <span className="text-gray-300">Web3 career paths and opportunities specific to the African market</span>
+              <span className="text-gray-300">Positioning yourself for Web3 jobs and bounties</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
+              <span className="text-gray-300">Community dynamics & how to lead with value</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
+              <span className="text-gray-300">The power of content — even if you're not a creator</span>
             </li>
           </ul>
         </motion.div>
@@ -193,7 +201,7 @@ const WorkshopPage: React.FC = () => {
             </div>
             <h3 className="text-xl font-bold mb-3">Daily Sessions</h3>
             <p className="text-gray-300">
-              Participate in live interactive sessions with our expert instructors via X Spaces and Discord for hands-on learning.
+              Participate in live interactive sessions with our expert instructors via X Spaces for hands-on learning.
             </p>
           </div>
           
@@ -237,33 +245,37 @@ const WorkshopPage: React.FC = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Award className="w-5 h-5 mr-3 text-cryptobliss-primary flex-shrink-0 mt-1" />
-                <span className="text-gray-300">$500 in cryptocurrency prizes for top participants</span>
+                <span className="text-gray-300">Top 3 Participants: Custom profile banners + spotlight features</span>
               </li>
               <li className="flex items-start">
                 <Award className="w-5 h-5 mr-3 text-cryptobliss-primary flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Limited edition NFTs for all workshop completers</span>
+                <span className="text-gray-300">All Active Participants: "Web3 Social Certified" digital certificate</span>
               </li>
               <li className="flex items-start">
                 <Award className="w-5 h-5 mr-3 text-cryptobliss-primary flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Free access to premium CRYPTOBLISS resources ($200 value)</span>
+                <span className="text-gray-300">Random Winners: Token airdrops and CRYPTOBLISS customized swag</span>
+              </li>
+              <li className="flex items-start">
+                <Award className="w-5 h-5 mr-3 text-cryptobliss-primary flex-shrink-0 mt-1" />
+                <span className="text-gray-300">Partner token drops for selected participants</span>
               </li>
             </ul>
           </div>
           
           <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-lg rounded-xl p-8">
-            <h3 className="text-2xl font-bold mb-4 text-white">Career Opportunities</h3>
+            <h3 className="text-2xl font-bold mb-4 text-white">Bonus Perks</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Mentorship sessions with leading African Web3 professionals</span>
+                <span className="text-gray-300">Special access to post-workshop opportunities</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Priority access to Web3 job opportunities through our network</span>
+                <span className="text-gray-300">Priority whitelisting for future events</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Invitation to join CRYPTOBLISS ambassador program</span>
+                <span className="text-gray-300">Access to a private growth circle</span>
               </li>
             </ul>
           </div>
@@ -442,7 +454,7 @@ const WorkshopPage: React.FC = () => {
           Secure Your Spot Now
         </motion.button>
         <p className="text-gray-400 mt-4">
-          Follow <a href="https://x.com/CRYPTOBLISS_01" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">#CryptoBlissWorkshop</a> for updates
+          Follow <a href="https://x.com/CRYPTOBLISS_01" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">#CryptoblissGrowth #SocialUpliftWorkshop</a> for updates
         </p>
       </motion.div>
     </div>
