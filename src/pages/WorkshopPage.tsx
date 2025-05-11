@@ -44,13 +44,6 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 };
 
 const WorkshopPage: React.FC = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    twitterHandle: '',
-    experience: 'beginner'
-  });
-  
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const navigate = useNavigate();
   
@@ -66,36 +59,9 @@ const WorkshopPage: React.FC = () => {
     threshold: 0.1,
   });
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormState(prev => ({ ...prev, [name]: value }));
-  };
-  
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmissionStatus('submitting');
-    
-    try {
-      // Replace with your actual form submission endpoint
-      const response = await fetch("https://formspree.io/f/your-form-id", {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formState)
-      });
-      
-      if (response.ok) {
-        setFormState({ name: '', email: '', twitterHandle: '', experience: 'beginner' });
-        navigate('/thank-you');
-      } else {
-        setSubmissionStatus('error');
-        console.error("Form submission failed:", await response.json());
-      }
-    } catch (error) {
-      setSubmissionStatus('error');
-      console.error("Error submitting form:", error);
-    }
+  // Replace scrollToRegister function with redirectToLuma
+  const redirectToLuma = () => {
+    window.open("https://lu.ma/dhuqqfwh", "_blank");
   };
 
   return (
@@ -116,7 +82,7 @@ const WorkshopPage: React.FC = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={scrollToRegister}
+          onClick={redirectToLuma}
           className="bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300"
         >
           Join the Workshop
@@ -295,110 +261,20 @@ const WorkshopPage: React.FC = () => {
           Spots are limited! Secure your place in our upcoming Web3 Masterclass Workshop
         </p>
         
-        <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">Your Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formState.name}
-                onChange={handleChange}
-                required
-                disabled={submissionStatus === 'submitting'}
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white disabled:opacity-50"
-                placeholder="Enter your full name"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">Your Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formState.email}
-                onChange={handleChange}
-                required
-                disabled={submissionStatus === 'submitting'}
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white disabled:opacity-50"
-                placeholder="Enter your email address"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="twitterHandle" className="block text-sm font-medium mb-2 text-gray-300">Twitter/X Handle</label>
-              <div className="relative">
-                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">@</span>
-                <input
-                  type="text"
-                  id="twitterHandle"
-                  name="twitterHandle"
-                  value={formState.twitterHandle}
-                  onChange={handleChange}
-                  required
-                  disabled={submissionStatus === 'submitting'}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white disabled:opacity-50"
-                  placeholder="your_handle"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="experience" className="block text-sm font-medium mb-2 text-gray-300">Your Experience Level</label>
-              <select
-                id="experience"
-                name="experience"
-                value={formState.experience}
-                onChange={handleChange}
-                required
-                disabled={submissionStatus === 'submitting'}
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 text-white disabled:opacity-50"
-              >
-                <option value="beginner" className="bg-gray-800">Beginner - New to Web3</option>
-                <option value="intermediate" className="bg-gray-800">Intermediate - Some knowledge</option>
-                <option value="advanced" className="bg-gray-800">Advanced - Actively using Web3</option>
-              </select>
-            </div>
-            
-            {submissionStatus === 'error' && (
-              <p className="text-red-400 text-sm text-center">
-                Sorry, there was an error processing your registration. Please try again later or contact us directly.
-              </p>
-            )}
-
-            <motion.button
-              whileHover={submissionStatus !== 'submitting' ? { scale: 1.05 } : {}}
-              whileTap={submissionStatus !== 'submitting' ? { scale: 0.95 } : {}}
-              type="submit"
-              disabled={submissionStatus === 'submitting'}
-              className="w-full bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
-            >
-              {submissionStatus === 'submitting' ? (
-                <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  Registering...
-                </>
-              ) : (
-                <>
-                  Register Now
-                  <Send className="w-5 h-5 ml-2" />
-                </>
-              )}
-            </motion.button>
-            
-            <p className="text-gray-400 text-sm text-center">
-              By registering, you agree to our {' '}
-              <Link to="/terms-of-service" className="text-blue-400 hover:underline">
-                Terms of Service
-              </Link>{' '}
-              and{' '}
-              <Link to="/privacy-policy" className="text-blue-400 hover:underline">
-                Privacy Policy
-              </Link>
-            </p>
-          </form>
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={redirectToLuma}
+            className="w-full md:w-auto bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 flex items-center justify-center mx-auto"
+          >
+            Register on Luma
+            <ExternalLink className="w-5 h-5 ml-2" />
+          </motion.button>
+          
+          <p className="text-gray-400 text-sm mt-4">
+            You'll be redirected to Luma to complete your registration
+          </p>
         </div>
       </motion.div>
 
@@ -448,7 +324,7 @@ const WorkshopPage: React.FC = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={scrollToRegister}
+          onClick={redirectToLuma}
           className="bg-white text-cryptobliss-dark font-bold py-3 px-8 rounded-full text-lg transition-all duration-300"
         >
           Secure Your Spot Now
