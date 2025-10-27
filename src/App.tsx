@@ -9,7 +9,8 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import ThankYouPage from './pages/ThankYouPage';
-import WorkshopPage from './pages/WorkshopPage'; // Import the new page
+import WorkshopPage from './pages/WorkshopPage';
+import BootcampPage from './pages/BootcampPage'; // Import the new bootcamp page
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="terms-of-service" element={<TermsOfServicePage />} />
           <Route path="thank-you" element={<ThankYouPage />} />
-          <Route path="workshop" element={<WorkshopPage />} /> {/* Add the new route */}
+          <Route path="workshop" element={<WorkshopPage />} />
+          <Route path="bootcamp" element={<BootcampPage />} /> {/* Add the new bootcamp route */}
         </Route>
       </Routes>
     </Router>

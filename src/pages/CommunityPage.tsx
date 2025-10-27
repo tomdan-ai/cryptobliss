@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link as RouterLink } from 'react-router-dom';
 import { Users, MessageSquare, Globe, Link, Briefcase, MapPin } from 'lucide-react';
 
 const TestimonialCard = ({ quote, name, role }: { quote: string, name: string, role: string }) => {
@@ -169,74 +170,38 @@ const CommunityPage: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8 text-center">Upcoming Community Events</h2>
         
         <div className="space-y-6">
-          {/* <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
+          {/* Bliss Creative Bootcamp 1.0 */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-gradient-to-r from-cryptobliss-primary/20 to-cryptobliss-secondary/20 rounded-xl border border-cryptobliss-primary/30">
             <div className="flex items-center mb-4 md:mb-0">
-              <div className="bg-blue-900 text-white rounded-lg p-3 mr-4 text-center">
-                <div className="text-sm">APR</div>
-                <div className="text-2xl font-bold">15</div>
+              <div className="bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-white rounded-lg p-3 mr-4 text-center">
+                <div className="text-sm">NOW</div>
+                <div className="text-xl font-bold">OPEN</div>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Web3 Basics Workshop</h3>
-                <div className="flex items-center text-gray-400 text-sm mt-1">
-                  <Globe className="w-4 h-4 mr-2" />
-                  <span>Virtual Event</span>
+                <h3 className="text-xl font-bold text-white">Bliss Creative Bootcamp 1.0</h3>
+                <div className="flex flex-col text-gray-300 text-sm mt-1">
+                  <span className="flex items-center">
+                    <Globe className="w-4 h-4 mr-2" />
+                    <span>Graphics Design • Motion Design • Video Editing</span>
+                  </span>
+                  <span className="text-cryptobliss-secondary mt-1 font-medium">
+                    Starting from $8 - Professional Certification Included
+                  </span>
                 </div>
               </div>
             </div>
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full text-sm transition-colors duration-300"
             >
-              Register
-            </motion.button>
+              <RouterLink
+                to="/bootcamp"
+                className="bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white py-2 px-6 rounded-full text-sm transition-colors duration-300 font-semibold inline-block"
+              >
+                Register Now
+              </RouterLink>
+            </motion.div>
           </div>
-          
-          <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="bg-purple-900 text-white rounded-lg p-3 mr-4 text-center">
-                <div className="text-sm">APR</div>
-                <div className="text-2xl font-bold">22</div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">DeFi Deep Dive</h3>
-                <div className="flex items-center text-gray-400 text-sm mt-1">
-                  <Globe className="w-4 h-4 mr-2" />
-                  <span>Virtual Event</span>
-                </div>
-              </div>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full text-sm transition-colors duration-300"
-            >
-              Register
-            </motion.button>
-          </div>
-          
-          <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="bg-blue-900 text-white rounded-lg p-3 mr-4 text-center">
-                <div className="text-sm">MAY</div>
-                <div className="text-2xl font-bold">05</div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Web3 Career Fair</h3>
-                <div className="flex items-center text-gray-400 text-sm mt-1">
-                  <MapPin className="w-4 h-4 mr-2" />
-                  <span>Lagos, Nigeria (Hybrid Event)</span>
-                </div>
-              </div>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full text-sm transition-colors duration-300"
-            >
-              Register
-            </motion.button>
-          </div> */}
 
           {/* Anniversary Event */}
           <div className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white/5 rounded-xl">

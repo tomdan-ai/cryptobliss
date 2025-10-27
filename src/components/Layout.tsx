@@ -2,12 +2,12 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import WorkshopPopup from './WorkshopPopup'; 
-import { useWorkshopPopup } from '../hooks/useWorkshopPopup';
+import BootcampPopup from './BootcampPopup'; 
+import { useBootcampPopup } from '../hooks/useBootcampPopup';
 
 const Layout: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { showPopup, closePopup } = useWorkshopPopup();
+  const { showPopup, closePopup } = useBootcampPopup();
 
   return (
     <div className="min-h-screen text-white relative">
@@ -17,8 +17,8 @@ const Layout: React.FC = () => {
         <div className="absolute w-[400px] h-[400px] bg-cryptobliss-secondary/30 rounded-full blur-3xl top-1/2 right-0 animate-pulse delay-1000" />
       </div>
 
-      {/* Workshop Popup */}
-      {showPopup && <WorkshopPopup onClose={closePopup} />}
+      {/* Bootcamp Popup */}
+      {showPopup && <BootcampPopup onClose={closePopup} />}
 
       {/* Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-cryptobliss-dark/80 backdrop-blur-lg">
