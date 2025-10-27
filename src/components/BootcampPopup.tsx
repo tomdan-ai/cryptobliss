@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, Award, Users, Clock } from 'lucide-react';
+import { X, Calendar, Award, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-interface WorkshopPopupProps {
+interface BootcampPopupProps {
   onClose: () => void;
 }
 
-const WorkshopPopup: React.FC<WorkshopPopupProps> = ({ onClose }) => {
+const BootcampPopup: React.FC<BootcampPopupProps> = ({ onClose }) => {
   return (
     <AnimatePresence>
       <motion.div
@@ -39,41 +39,47 @@ const WorkshopPopup: React.FC<WorkshopPopupProps> = ({ onClose }) => {
           
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary text-transparent bg-clip-text">
-              Web3 Masterclass Workshop
+              Bliss Creative Bootcamp 1.0
             </h2>
             <p className="text-gray-300">
-              Join our exclusive 5-day workshop and accelerate your Web3 journey!
+              Master Graphics Design, Motion Design, or Video Editing with our intensive creative bootcamp!
             </p>
           </div>
           
           <div className="bg-white/10 rounded-xl p-4 mb-6">
-            <div className="flex items-center text-gray-300 mb-2">
-              <Calendar className="w-5 h-5 mr-2 text-cryptobliss-primary" />
-              <span>May 15-19, 2025</span>
+            <div className="space-y-3">
+              <div className="flex items-center text-gray-300">
+                <Calendar className="w-5 h-5 mr-2 text-cryptobliss-primary" />
+                <span>Intensive Creative Training</span>
+              </div>
+              <div className="flex items-center text-gray-300">
+                <Award className="w-5 h-5 mr-2 text-cryptobliss-primary" />
+                <span>Professional Certification</span>
+              </div>
+              <div className="flex items-center text-gray-300">
+                <Users className="w-5 h-5 mr-2 text-cryptobliss-primary" />
+                <span>Exclusive Creative Community</span>
+              </div>
             </div>
-            <div className="flex items-center text-gray-300 mb-2">
-              <Clock className="w-5 h-5 mr-2 text-cryptobliss-primary" />
-              <span>8:00 PM - 9:30 PM WAT</span>
+            
+            <div className="mt-4 pt-4 border-t border-gray-600">
+              <h4 className="text-white font-semibold mb-2">Available Tracks:</h4>
+              <ul className="space-y-1 text-sm text-gray-300">
+                <li>• Graphics Design — $8 @N1,500</li>
+                <li>• Motion Design — $12 @N1,500</li>
+                <li>• Video Editing — $15 @N1,500</li>
+              </ul>
             </div>
-            <ul className="space-y-2">
-              <li className="flex items-start">
-                <Award className="w-4 h-4 mr-2 text-cryptobliss-primary flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Custom profile banners for top participants</span>
-              </li>
-              <li className="flex items-start">
-                <Users className="w-4 h-4 mr-2 text-cryptobliss-primary flex-shrink-0 mt-1" />
-                <span className="text-gray-300">Mentorship from leading African Web3 professionals</span>
-              </li>
-            </ul>
           </div>
           
           <div className="flex flex-col space-y-3">
             <Link 
-              to="/workshop"
+              to="/bootcamp"
               onClick={onClose}
-              className="bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-2 px-6 rounded-full text-center transition-all duration-300"
+              className="bg-gradient-to-r from-cryptobliss-primary to-cryptobliss-secondary hover:from-cryptobliss-primary/80 hover:to-cryptobliss-secondary/80 text-white font-bold py-3 px-6 rounded-full text-center transition-all duration-300 flex items-center justify-center"
             >
               Register Now
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
             <button
               onClick={onClose}
@@ -88,4 +94,4 @@ const WorkshopPopup: React.FC<WorkshopPopupProps> = ({ onClose }) => {
   );
 };
 
-export default WorkshopPopup;
+export default BootcampPopup;

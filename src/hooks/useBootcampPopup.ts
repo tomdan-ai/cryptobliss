@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export const useWorkshopPopup = () => {
+export const useBootcampPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
   const location = useLocation();
   
   useEffect(() => {
-    // Don't show on workshop or thank-you pages
-    if (location.pathname === '/workshop' || location.pathname === '/thank-you') {
+    // Don't show on workshop, bootcamp, or thank-you pages
+    if (location.pathname === '/workshop' || location.pathname === '/bootcamp' || location.pathname === '/thank-you') {
       return;
     }
     
     // Check if user has dismissed the popup recently
-    const lastDismissed = localStorage.getItem('workshop_popup_dismissed');
+    const lastDismissed = localStorage.getItem('bootcamp_popup_dismissed');
     const lastDismissedTime = lastDismissed ? parseInt(lastDismissed) : 0;
     
     // Show popup if it hasn't been dismissed in the last 30 minutes
@@ -28,7 +28,7 @@ export const useWorkshopPopup = () => {
   const closePopup = () => {
     setShowPopup(false);
     // Remember that user closed the popup
-    localStorage.setItem('workshop_popup_dismissed', Date.now().toString());
+    localStorage.setItem('bootcamp_popup_dismissed', Date.now().toString());
   };
   
   return { showPopup, closePopup };
